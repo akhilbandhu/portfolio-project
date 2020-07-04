@@ -54,8 +54,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="http://127.0.0.1:8000/blog/">Blog</a>
+          <a class="nav-item nav-link" href="http://127.0.0.1:8000/">Home</a>
+          <a class="nav-item nav-link active" href="http://127.0.0.1:8000/blog/">Blog</a>
           <a class="nav-item nav-link" href="https://github.com/akhilbandhu">GitHub</a>
           <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
         </div>
@@ -64,35 +64,23 @@
   </header>
 
   <main role="main">
+  <div class = "container">
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1>Hey, Welcome to my site</h1>
-        <p class="lead text-muted">This is my second Django website, it is a little sneak peak into my life :)</p>
-        <p>
-          <a href="mailto:akhilbandhu@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-      </div>
-    </section>
+    <h1 class = "text-center pt-3">Welcome to Akhil's Blog</h1>
+    <br />
+    <br />
+    <h2>Latest Posts</h2>
+    <hr />
 
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row">
-          {% for job in jobs.all%}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" src = "{{ job.image.url }}" />
-              <div class="card-body">
-                <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
+    {% for blog in blogs.all %}
+    <a href="http://127.0.0.1:8000/blog/<int:blog_id>/"><h3> {{ blog.title }} </h3></a>   #have to change this
+    {{ blog.pub_date_pretty }}
+    <br />
+    <img class="image-fluid" src="{{ blog.image.url }}" height = 200  width = 200 />
+    <br />
+    <p> {{ blog.summary }} </p>
+    {% endfor %}
+  </div>
   </main>
 
   <footer class="text-muted">
