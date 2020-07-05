@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.0.1">
-  <title>Akhil Bandhu Anand</title>
+  <title>Akhil's Blogs</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -48,14 +48,14 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Akhil Bandhu Anand</a>
+      <a class="navbar-brand" href="{% url 'homepage' %}">Akhil Bandhu Anand</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="http://127.0.0.1:8000/">Home</a>
-          <a class="nav-item nav-link active" href="http://127.0.0.1:8000/blog/">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
           <a class="nav-item nav-link" href="https://github.com/akhilbandhu">GitHub</a>
           <a class="nav-item nav-link" href="{% static 'resume.pdf' %}">Resume</a>
         </div>
@@ -73,7 +73,7 @@
     <hr />
 
     {% for blog in blogs.all %}
-    <a href="http://127.0.0.1:8000/blog/<int:blog_id>/"><h3> {{ blog.title }} </h3></a>   #have to change this
+    <a href="{% url 'detail' blog.id %}"><h3> {{ blog.title }} </h3></a>   
     {{ blog.pub_date_pretty }}
     <br />
     <img class="image-fluid" src="{{ blog.image.url }}" height = 200  width = 200 />
